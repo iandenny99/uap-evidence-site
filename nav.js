@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     { text: 'Scientists',   href: b + '/people/scientists/' },
     { text: 'Journalists',  href: b + '/people/journalists/' },
     { text: 'Gatekeepers',  href: b + '/people/gatekeepers/' },
+    { text: 'Toolkit',      href: b + '/toolkit/' },
+    { text: 'Contribute',   href: b + '/contribute/' },
+    { text: 'About',        href: b + '/about/' },
   ];
 
   document.querySelectorAll('.nav').forEach(nav => {
