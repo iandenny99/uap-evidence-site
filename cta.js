@@ -1,60 +1,80 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const siteBase = (document.querySelector('meta[name="site-base"]')?.getAttribute('content') || '/');
-  const siteUrl  = (document.querySelector('meta[name="site-url"]')?.getAttribute('content') || 'https://YOUR-SITE-URL/');
+  const baseMeta = document.querySelector('meta[name="site-base"]');
+  const siteUrlMeta = document.querySelector('meta[name="site-url"]');
+  const base = (baseMeta ? baseMeta.getAttribute('content') : '/') || '/';
+  const b = base.endsWith('/') ? base.slice(0, -1) : base; // e.g. "/uap-evidence-site"
+  const siteUrl = siteUrlMeta ? siteUrlMeta.getAttribute('content') : location.origin;
 
-  const TO = 'newsonline@bbc.co.uk';
-  const SUBJECT = 'Please Investigate the Evidence on Unidentified Aerial Phenomena';
-  const STANDARD = (
-`There is a growing body of credible, documented evidence suggesting that governments have withheld or downplayed information about unidentified aerial phenomena (UAP). This spans historical records, whistleblower testimony, peer-reviewed research, and official statements.
-
-This site assembles verifiable sources with citations and links to primary documents. The public deserves a serious, transparent investigation.
-
-I respectfully ask the BBC to assign investigative resources to examine this evidence with the same rigour applied to major public-interest scandals.
-
-Evidence overview:
-${siteUrl}evidence
-
-Kind regards,
-A concerned viewer/licence-payer`
-  ).trim();
-
-  document.querySelectorAll('[data-cta]').forEach((mount) => {
-    const cta = document.createElement('section');
-    cta.className = 'cta card';
-    cta.innerHTML = `
-      <h3>Read Enough? Ready to put your weight behind the push for the BBC to investigate?</h3>
-      <p>Get your email started with a single click. Add an optional personal intro; we’ll open your email app, then bring you to a quick complaint helper.</p>
-      <label for="intro">(Optional) Your introduction</label>
-      <textarea id="intro" rows="4" placeholder="Why this matters to you..."></textarea>
-      <div style="margin-top:12px; display:flex; gap:12px; flex-wrap:wrap;">
-        <button class="btn" id="sendEmail">Get Your Email Started</button>
-        <a class="badge" href="#complaint" id="toHelper">Go to Complaint Helper</a>
-      </div>
-    `;
-    mount.appendChild(cta);
-
-    const intro = cta.querySelector('#intro');
-    const btn   = cta.querySelector('#sendEmail');
-    const help  = cta.querySelector('#toHelper');
-
-    function goToHelper() {
-      const url = siteBase.replace(/\/+$/, '') + '/complaint-helper/';
-      window.location.href = url;
+  // --- Helper: track analytics events if provider is present ---
+  function trackEmailCTA() {
+    // Plausible (privacy-friendly)
+    if (typeof window.plausible === 'function') {
+      window.plausible('Email CTA Click');
     }
+    // GoatCounter fallback (optional; add its script separately if you ever want it)
+    if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+      window.goatcounter.count({ path: 'email-cta', title: document.title, event: true });
+    }
+    // GA4 fallback (if gtag present)
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'email_cta_click', { page_location: location.href, page_title: document.title });
+    }
+  }
 
-    btn.addEventListener('click', () => {
-      const userIntro = (intro.value || '').trim();
-      const body = (userIntro ? userIntro + '\n\n—\n\n' : '') + STANDARD;
-      const mailto = 'mailto:' + encodeURIComponent(TO)
-        + '?subject=' + encodeURIComponent(SUBJECT)
-        + '&body=' + encodeURIComponent(body);
-      window.location.href = mailto;     // opens the user’s email app
-      setTimeout(goToHelper, 400);       // then jump to complaint helper
-    });
+  // --- Build CTA block wherever <div data-cta> appears ---
+  const blocks = document.querySelectorAll('[data-cta]');
+  if (!blocks.length) return;
 
-    help.addEventListener('click', (e) => {
+  const headline = 'Read Enough? Ready to put your weight behind the push for the BBC to investigate?';
+  const btnText  = 'Get your email started with a single click';
+
+  blocks.forEach(el => {
+    const card = document.createElement('section');
+    card.className = 'card';
+    const h3 = document.createElement('h3');
+    h3.textContent = headline;
+    const p = document.createElement('p');
+    p.textContent = 'We’ve drafted the core message. Add your intro, then send via your email app. A companion “complaint” text is ready too.';
+
+    const btn = document.createElement('button');
+    btn.className = 'btn';
+    btn.id = 'cta-email-bbc';
+    btn.type = 'button';
+    btn.textContent = btnText;
+
+    btn.addEventListener('click', (e) => {
       e.preventDefault();
-      goToHelper();
+      trackEmailCTA(); // <<— counts the click
+
+      const to = 'newsonline@bbc.co.uk';
+      const subject = 'Request for investigation: Unidentified Anomalous Phenomena (UAP) evidence';
+      const bodyLines = [
+        'Hello BBC News team,',
+        '',
+        'I’m writing to ask the BBC to assign an investigative team to the UAP (Unidentified Anomalous Phenomena) topic.',
+        'This site collates primary sources, sworn testimony, and official documents to help jump-start your review:',
+        siteUrl,
+        '',
+        'Key items include: the UAP Disclosure Act text & negotiations, sworn testimony (2023–2025) with certified transcripts, official Navy/DoD imagery and records, and UK/US FOIA repositories.',
+        '',
+        'I believe the public interest merits Watergate-level rigour—whichever way the facts fall.',
+        '',
+        'Many thanks,',
+        '[Your name]'
+      ];
+      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+
+      // Open email, then route to complaint-helper for the optional complaint text
+      // Using a small delay helps mail clients open first.
+      window.location.href = mailto;
+      setTimeout(() => {
+        window.location.href = `${b}/complaint-helper/`;
+      }, 600);
     });
+
+    card.appendChild(h3);
+    card.appendChild(p);
+    card.appendChild(btn);
+    el.replaceWith(card);
   });
 });
