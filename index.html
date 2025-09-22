@@ -1,4 +1,49 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><title>Placeholder</title></head>
-<body><h1>Placeholder</h1></body></html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>You don’t need to be Sherlock Holmes to spot a pattern here</title>
+  <meta name="site-base" content="/uap-evidence-site/">
+  <meta name="site-url" content="https://iandenny99.github.io/uap-evidence-site/">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./cta.js"></script>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <a class="brand" href="./">UAP Evidence</a>
+      <a href="./start-here/">Start Here</a>
+      <a href="./evidence/">Evidence</a>
+      <a href="./people/witnesses/">Witnesses</a>
+      <a href="./people/scientists/">Scientists</a>
+    </nav>
+
+    <section class="hero">
+      <h1>You don’t need to be Sherlock Holmes to spot a pattern here.</h1>
+      <p>For a moment, set aside automatic scepticism. If even one of the following is true, the implications for energy, science and public trust are enormous:</p>
+      <div class="grid" style="margin-top:12px;">
+        <div class="card"><strong>We are not alone.</strong></div>
+        <div class="card"><strong>Governments have kept aspects of UAP and recovered materials secret for decades.</strong></div>
+        <div class="card"><strong>Some programmes appear aimed at analysing or reverse-engineering recovered craft.</strong></div>
+        <div class="card"><strong>There are signals of transformative energy technologies (often described as “zero-point”).</strong></div>
+      </div>
+      <p style="margin-top:12px;">This site assembles primary sources and serious leads. If the BBC applies Watergate-level rigour here, the public will be better informed — whichever way the facts fall.</p>
+    </section>
+
+    <section class="card">
+      <h3>Get oriented</h3>
+      <p>Start with a guided trail, then dive into the library of sources.</p>
+      <p>
+        <a class="btn" href="./start-here/">Start Here</a>
+        <a class="badge" href="./evidence/" style="margin-left:12px;">Browse Evidence</a>
+      </p>
+    </section>
+
+    <div data-cta></div>
+
+    <footer class="footer">© <span id="y"></span> UAP Evidence • Primary sources first • Neutral, verifiable, accountable</footer>
+  </div>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
