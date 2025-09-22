@@ -1,4 +1,76 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><title>Placeholder</title></head>
-<body><h1>Placeholder</h1></body></html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Complaint Helper • UAP Evidence</title>
+  <meta name="site-base" content="/uap-evidence-site/">
+  <meta name="site-url" content="https://iandenny99.github.io/uap-evidence-site/">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <a class="brand" href="../">UAP Evidence</a>
+      <a href="../start-here/">Start Here</a>
+      <a href="../evidence/">Evidence</a>
+      <a href="../people/witnesses/">Witnesses</a>
+      <a href="../people/scientists/">Scientists</a>
+    </nav>
+
+    <h1>Quick Complaint Builder (BBC)</h1>
+    <p class="card">Copy the text below, then paste it into the BBC complaints form. We've kept it concise (~1,500 characters) so it fits most forms. Update the subject if you prefer.</p>
+
+    <label for="complaintSubject"><strong>Suggested subject (≤255 chars):</strong></label>
+    <input id="complaintSubject" type="text" value="BBC failure to investigate credible UAP evidence" />
+
+    <label for="complaintBody" style="margin-top:12px; display:block;"><strong>Complaint text:</strong></label>
+    <textarea id="complaintBody" rows="12">I am complaining about the BBC’s failure to provide serious coverage of credible evidence on Unidentified Aerial Phenomena (UAP).
+
+There are multiple documented sources that meet clear public-interest thresholds: sworn whistleblower testimony to lawmakers, peer-reviewed scientific findings of unexplained satellite-like objects before Sputnik, historical government records released through FOIA, and official statements by defence and intelligence officials.
+
+These have been reported internationally, yet BBC audiences have seen little or no investigative journalism. This lack of coverage risks undermining trust in the BBC’s duty to inform the public and examine issues of potential global importance.
+
+I ask the BBC to explain why this evidence has been overlooked and to commit to reviewing it properly. A compilation of sources is publicly accessible here:
+https://iandenny99.github.io/uap-evidence-site/evidence
+
+Kind regards,
+[Your name]</textarea>
+
+    <div style="margin:12px 0; display:flex; gap:12px; flex-wrap:wrap;">
+      <button class="btn" id="copyAll">Copy Text</button>
+      <a class="badge" href="https://www.bbc.co.uk/contact/complaints" target="_blank" rel="noopener">Open the BBC Complaints Page</a>
+    </div>
+
+    <section class="card">
+      <strong>Tips:</strong>
+      <ul>
+        <li>Paste the <em>subject</em> and <em>complaint text</em> into the BBC form.</li>
+        <li>Include the evidence URL above. Add any specific links if the form allows.</li>
+        <li><strong>Recommended UK contact for BBC journalists:</strong> liaise with <strong>Christopher Sharp</strong> of <a href="https://www.liberationtimes.com" target="_blank" rel="noopener">Liberation Times</a> as a first port of call on the UK perspective.</li>
+        <li>Keep a copy of your submission/acknowledgement for reference.</li>
+      </ul>
+    </section>
+
+    <div data-cta></div>
+
+    <footer class="footer">© <span id="y"></span> UAP Evidence</footer>
+  </div>
+  <script>
+    document.getElementById('y').textContent=new Date().getFullYear();
+    document.getElementById('copyAll').addEventListener('click', async () => {
+      const subj = document.getElementById('complaintSubject').value.trim();
+      const body = document.getElementById('complaintBody').value.trim();
+      const text = 'Subject: ' + subj + '\n\n' + body;
+      try {
+        await navigator.clipboard.writeText(text);
+        document.getElementById('copyAll').textContent = 'Copied!';
+        setTimeout(() => document.getElementById('copyAll').textContent = 'Copy Text', 1500);
+      } catch (e) {
+        alert('Copy failed. Please select and copy manually.');
+      }
+    });
+  </script>
+  <script defer src="../cta.js"></script>
+</body>
+</html>
