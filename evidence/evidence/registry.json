@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "villarroel-plates",
+    "title": "Pre-Sputnik satellite-like tracks on historical plates (Villarroel et al.)",
+    "summary": "Peer-reviewed analyses of mid-20th-century astronomical plates report satellite-like tracks before Sputnik; authors call for independent replication and strict artefact controls.",
+    "tags": ["Peer-reviewed", "Astronomy"]
+  },
+  {
+    "slug": "italy-1933-recovery-claims",
+    "title": "Alleged 1933 Italy recovered craft (referenced in later testimony)",
+    "summary": "Historical claims and archival references concerning a purported recovered craft in Italy (early 1930s). Entry collates documents, provenance, and what later witnesses have asserted about this case.",
+    "tags": ["Historical", "Government/Records"]
+  },
+  {
+    "slug": "sworn-testimony-uap-oversight-2023-2024",
+    "title": "Sworn testimony to lawmakers regarding UAP crash retrieval and programs (2023–2024)",
+    "summary": "Under-oath statements by current/former government and military personnel to oversight bodies alleging crash retrieval and related programs; links to transcripts, exhibits, and follow-up leads.",
+    "tags": ["Testimony", "Oversight"]
+  },
+  {
+    "slug": "foia-archival-releases-selected",
+    "title": "FOIA & archival releases relevant to UAP (selected items)",
+    "summary": "Curated set of declassified records and archival materials with direct links, context, and guidance on how journalists can request corroborating documents.",
+    "tags": ["FOIA", "Archives"]
+  },
+  {
+    "slug": "instrumented-encounters-selected-cases",
+    "title": "Instrumented encounters with radar/visual corroboration (selected cases)",
+    "summary": "Cases with multi-sensor data (e.g., radar plus visual) and associated logs where available; focuses on provenance, data quality, and avenues for independent verification.",
+    "tags": ["Data", "Multi-sensor"]
+  }
+]
