@@ -1,38 +1,38 @@
 [
   {
+    "slug": "uap-disclosure-act-legislative-history",
+    "title": "UAP Disclosure Act (2023–2025): text, what survived, and documented pushback",
+    "summary": "Original Schumer–Rounds proposals (incl. eminent domain over recovered technologies/biological evidence), what actually became law in Dec 2023, and public pushback—linked to official PDFs and nonpartisan funding data.",
+    "tags": ["Legislation", "Oversight"]
+  },
+  {
     "slug": "villarroel-plates",
     "title": "Pre-Sputnik satellite-like tracks on historical plates (Villarroel et al.)",
-    "summary": "Peer-reviewed analyses of mid-20th-century astronomical plates report satellite-like tracks before Sputnik; authors call for independent replication and strict artefact controls.",
+    "summary": "Peer-reviewed analyses of mid-20th-century astronomical plates report satellite-like tracks before Sputnik; authors call for replication and strict artefact controls.",
     "tags": ["Peer-reviewed", "Astronomy"]
   },
   {
     "slug": "italy-1933-recovery-claims",
     "title": "Alleged 1933 Italy recovered craft (referenced in later testimony)",
-    "summary": "Historical claims and archival references concerning a purported recovered craft in Italy (early 1930s). Entry collates documents, provenance, and what later witnesses have asserted about this case.",
+    "summary": "Historical claims and archival references concerning a purported recovered craft in Italy; page collates documents, provenance, and later witness references.",
     "tags": ["Historical", "Government/Records"]
   },
   {
     "slug": "sworn-testimony-uap-oversight-2023-2024",
-    "title": "Sworn testimony to lawmakers regarding UAP crash retrieval and programs (2023–2024)",
-    "summary": "Under-oath statements by current/former government and military personnel to oversight bodies alleging crash retrieval and related programs; links to transcripts, exhibits, and follow-up leads.",
+    "title": "Sworn testimony to lawmakers regarding UAP programs (2023–2025)",
+    "summary": "Three House hearings (2023, 2024, 2025) with under-oath testimony; links to official videos, transcripts, and written statements.",
     "tags": ["Testimony", "Oversight"]
   },
   {
     "slug": "foia-archival-releases-selected",
-    "title": "FOIA & archival releases relevant to UAP (selected items)",
-    "summary": "Curated set of declassified records and archival materials with direct links, context, and guidance on how journalists can request corroborating documents.",
+    "title": "FOIA & archival releases relevant to UAP (selected)",
+    "summary": "UK/US official repositories and key releases with guidance for targeted requests and verification.",
     "tags": ["FOIA", "Archives"]
   },
   {
     "slug": "instrumented-encounters-selected-cases",
     "title": "Instrumented encounters with radar/visual corroboration (selected cases)",
-    "summary": "Cases with multi-sensor data (e.g., radar plus visual) and associated logs where available; focuses on provenance, data quality, and avenues for independent verification.",
+    "summary": "Official Navy/DoD releases (FLIR1, GIMBAL, GOFAST) and AARO imagery with data-leads for independent verification.",
     "tags": ["Data", "Multi-sensor"]
   }
-  {
-  "slug": "uap-disclosure-act-legislative-history",
-  "title": "UAP Disclosure Act (2023–2025): text, what survived, and documented pushback",
-  "summary": "What the original Schumer–Rounds proposals said (incl. eminent domain over recovered technologies/biological evidence), what actually became law in Dec 2023, and who publicly pushed back—linked to the official PDFs and nonpartisan funding data.",
-  "tags": ["Legislation", "Oversight"]
-}
 ]
