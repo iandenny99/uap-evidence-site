@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('script[src*="plausible.io/js/script"]')) return;
     const s = document.createElement('script');
     s.defer = true;
-    s.setAttribute('data-domain', domain); // e.g., "iandenny99.github.io"
+    s.setAttribute('data-goatcounter', 'https://iandenny.goatcounter.com/count');
     s.src = 'https://plausible.io/js/script.js';
     document.head.appendChild(s);
   })();
