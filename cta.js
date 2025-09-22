@@ -5,12 +5,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const b = base.endsWith('/') ? base.slice(0, -1) : base; // e.g. "/uap-evidence-site"
   const siteUrl = siteUrlMeta ? siteUrlMeta.getAttribute('content') : location.origin;
 
-  // --- analytics helper (works with GoatCounter / Plausible / GA if present) ---
+  // --- analytics helper (now logs to GoatCounter as a normal "page" so it's easy to see) ---
   function trackEmailCTA() {
+    // Plausible (if you ever add it)
     if (typeof window.plausible === 'function') window.plausible('Email CTA Click');
+    // GoatCounter (FREE): show as a normal page so it appears under "Top pages"
     if (window.goatcounter && typeof window.goatcounter.count === 'function') {
-      window.goatcounter.count({ path: 'email-cta', title: document.title, event: true });
+      window.goatcounter.count({
+        path: '/action/email-cta',   // <-- you'll see THIS in GoatCounter's "Top pages" list
+        title: 'Email CTA'
+        // note: no "event: true" here on purpose, so it shows in Top pages
+      });
     }
+    // GA4 fallback (if you ever add it)
     if (typeof window.gtag === 'function') window.gtag('event', 'email_cta_click', { page_location: location.href, page_title: document.title });
   }
 
@@ -31,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const p = document.createElement('p');
     p.textContent = 'Add a short personal intro (optional), then we’ll open your email app with the rest pre-filled. We’ll also show a ready-made BBC complaint on the next page if you prefer that route.';
 
-    // --- Personal intro box (this is the bit that went missing) ---
+    // personal intro box
     const label = document.createElement('label');
     label.setAttribute('for', 'cta-intro');
     label.style.display = 'block';
