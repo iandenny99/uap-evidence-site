@@ -5,23 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const b = base.endsWith('/') ? base.slice(0, -1) : base; // e.g. "/uap-evidence-site"
   const siteUrl = siteUrlMeta ? siteUrlMeta.getAttribute('content') : location.origin;
 
-  // --- Helper: track analytics events if provider is present ---
+  // --- analytics helper (works with GoatCounter / Plausible / GA if present) ---
   function trackEmailCTA() {
-    // Plausible (privacy-friendly)
-    if (typeof window.plausible === 'function') {
-      window.plausible('Email CTA Click');
-    }
-    // GoatCounter fallback (optional; add its script separately if you ever want it)
+    if (typeof window.plausible === 'function') window.plausible('Email CTA Click');
     if (window.goatcounter && typeof window.goatcounter.count === 'function') {
       window.goatcounter.count({ path: 'email-cta', title: document.title, event: true });
     }
-    // GA4 fallback (if gtag present)
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'email_cta_click', { page_location: location.href, page_title: document.title });
-    }
+    if (typeof window.gtag === 'function') window.gtag('event', 'email_cta_click', { page_location: location.href, page_title: document.title });
   }
 
-  // --- Build CTA block wherever <div data-cta> appears ---
+  // build CTA wherever <div data-cta> appears
   const blocks = document.querySelectorAll('[data-cta]');
   if (!blocks.length) return;
 
@@ -31,26 +24,62 @@ document.addEventListener('DOMContentLoaded', () => {
   blocks.forEach(el => {
     const card = document.createElement('section');
     card.className = 'card';
+
     const h3 = document.createElement('h3');
     h3.textContent = headline;
+
     const p = document.createElement('p');
-    p.textContent = 'We’ve drafted the core message. Add your intro, then send via your email app. A companion “complaint” text is ready too.';
+    p.textContent = 'Add a short personal intro (optional), then we’ll open your email app with the rest pre-filled. We’ll also show a ready-made BBC complaint on the next page if you prefer that route.';
+
+    // --- Personal intro box (this is the bit that went missing) ---
+    const label = document.createElement('label');
+    label.setAttribute('for', 'cta-intro');
+    label.style.display = 'block';
+    label.style.margin = '8px 0 4px';
+    label.textContent = 'Your personal intro (optional):';
+
+    const textarea = document.createElement('textarea');
+    textarea.id = 'cta-intro';
+    textarea.rows = 4;
+    textarea.placeholder = 'Why this matters to you (e.g., climate/energy, transparency, public safety, scientific curiosity)…';
+    textarea.style.width = '100%';
+    textarea.style.padding = '8px';
+    textarea.style.borderRadius = '8px';
+    textarea.style.border = '1px solid #24283a';
+    textarea.style.background = '#0b0c12';
+    textarea.style.color = '#e6e6e6';
+
+    const hint = document.createElement('p');
+    hint.className = 'muted';
+    hint.style.marginTop = '6px';
+    hint.textContent = 'Tip: one or two sentences is perfect. You can edit more in your email app.';
 
     const btn = document.createElement('button');
     btn.className = 'btn';
     btn.id = 'cta-email-bbc';
     btn.type = 'button';
+    btn.style.marginTop = '12px';
     btn.textContent = btnText;
 
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      trackEmailCTA(); // <<— counts the click
+      trackEmailCTA();
+
+      const intro = (textarea.value || '').trim();
 
       const to = 'newsonline@bbc.co.uk';
       const subject = 'Request for investigation: Unidentified Anomalous Phenomena (UAP) evidence';
+
       const bodyLines = [
         'Hello BBC News team,',
         '',
+      ];
+
+      if (intro) {
+        bodyLines.push(intro, '');
+      }
+
+      bodyLines.push(
         'I’m writing to ask the BBC to assign an investigative team to the UAP (Unidentified Anomalous Phenomena) topic.',
         'This site collates primary sources, sworn testimony, and official documents to help jump-start your review:',
         siteUrl,
@@ -61,11 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
         '',
         'Many thanks,',
         '[Your name]'
-      ];
+      );
+
       const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
 
       // Open email, then route to complaint-helper for the optional complaint text
-      // Using a small delay helps mail clients open first.
       window.location.href = mailto;
       setTimeout(() => {
         window.location.href = `${b}/complaint-helper/`;
@@ -74,7 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     card.appendChild(h3);
     card.appendChild(p);
+    card.appendChild(label);
+    card.appendChild(textarea);
+    card.appendChild(hint);
     card.appendChild(btn);
+
     el.replaceWith(card);
   });
 });
