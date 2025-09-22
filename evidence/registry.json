@@ -29,4 +29,10 @@
     "summary": "Cases with multi-sensor data (e.g., radar plus visual) and associated logs where available; focuses on provenance, data quality, and avenues for independent verification.",
     "tags": ["Data", "Multi-sensor"]
   }
+  {
+  "slug": "uap-disclosure-act-legislative-history",
+  "title": "UAP Disclosure Act (2023–2025): text, what survived, and documented pushback",
+  "summary": "What the original Schumer–Rounds proposals said (incl. eminent domain over recovered technologies/biological evidence), what actually became law in Dec 2023, and who publicly pushed back—linked to the official PDFs and nonpartisan funding data.",
+  "tags": ["Legislation", "Oversight"]
+}
 ]
