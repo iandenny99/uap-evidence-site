@@ -1,114 +1,371 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Whistleblowers & Witnesses • UAP Evidence</title>
-  <meta name="site-base" content="/uap-evidence-site/">
-  <meta name="site-url" content="https://iandenny99.github.io/uap-evidence-site/">
-  <link rel="stylesheet" href="../../styles.css">
-  <script defer src="../../cta.js"></script>
-  <script defer src="../../nav.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Witnesses — UAP Evidence</title>
+  <meta name="description" content="Key UAP witnesses grouped by those who have testified under oath and credible witnesses who arguably need to testify. Consistent, source-linked cards." />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --card: #111522;
+      --muted: #c7d2fe;
+      --text: #eef2ff;
+      --accent: #ff5e12; /* BCN orange */
+      --link: #60a5fa;
+      --border: rgba(255,255,255,0.10);
+    }
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: radial-gradient(1200px 700px at 20% -10%, #1a2040 0%, var(--bg) 60%), #000; color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans";
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
+    header { margin-bottom: 22px; }
+    h1 { margin: 0 0 8px; font-size: clamp(28px, 4vw, 40px); letter-spacing: .2px; }
+    p.lead { margin: 0; color: var(--muted); font-size: clamp(16px, 2.2vw, 19px); }
+
+    h2 { margin: 28px 0 10px; font-size: clamp(22px, 3vw, 28px); }
+    .note { color: var(--muted); font-size: 14px; margin: 4px 0 18px; }
+
+    .grid { display: grid; gap: 16px; }
+    @media (min-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1060px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid var(--border); border-radius: 18px; padding: 16px 16px 14px;
+    }
+    .name { display:flex; align-items: baseline; gap: 10px; margin: 0 0 6px; }
+    .name .who { font-size: 18px; font-weight: 800; }
+    .name .role { font-size: 13px; color: var(--muted); font-weight: 600; }
+
+    .tags { display:flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 12px; }
+    .tag { font-size: 11px; padding: 4px 8px; border: 1px dashed var(--border); border-radius: 999px; color: var(--muted); }
+
+    .section { margin-top: 10px; }
+    .label { font-size: 12px; font-weight: 800; letter-spacing: .3px; color: var(--muted); text-transform: uppercase; }
+    .why { margin: 6px 0 10px; }
+    ul { margin: 6px 0 10px 18px; padding: 0; }
+    li { margin: 6px 0; }
+
+    .sources { display:flex; flex-direction: column; gap: 4px; }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    blockquote { margin: 10px 0 4px; padding-left: 12px; border-left: 3px solid var(--accent); color: var(--muted); }
+
+    .divider { height: 1px; background: var(--border); margin: 26px 0; opacity: .7; }
+      /* CTA + buttons */
+    .ctaRow { display:grid; grid-template-columns: 1fr; gap: 10px; margin: 10px 0 8px; }
+    @media (min-width: 640px) { .ctaRow { grid-template-columns: auto auto; justify-content: start; } }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; padding: 10px 14px; border-radius: 12px; font-weight: 800; text-decoration:none; cursor:pointer; border: 1px solid var(--border); background: var(--accent); color: #0b0e14; }
+    .btn.secondary { background: transparent; color: var(--text); }
+    .btn.ghost { background: transparent; color: var(--muted); }
+    .shareRow { display:flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <nav class="nav"></nav>
+  <div class="wrap">
+    <header>
+      <h1>Witnesses</h1>
+      <p class="lead">Structured into two groups for clarity and credibility. Each card keeps a short rationale, key claims, and public sources you can review.</p>
+    </header>
 
-    <h1>Whistleblowers & Witnesses</h1>
-    <p class="card">Individuals who provided <strong>under-oath</strong> or on-record statements in U.S. House hearings on UAP (2023, 2024, 2025). Each card links to their <strong>official prepared statement (PDF)</strong>. Use alongside our <a href="../../evidence/sworn-testimony-uap-oversight-2023-2024/">Hearings summary</a>.</p>
+    <!-- ============================== -->
+    <!-- Group 1: Testified Under Oath -->
+    <!-- ============================== -->
+    <section id="oath">
+      <h2>Those who have testified under oath</h2>
+      <div class="grid">
+        <!-- David Grusch -->
+        <article class="card" id="grusch">
+          <div class="name"><span class="who">David Grusch</span><span class="role">Former U.S. intelligence officer; House Oversight witness (26 Jul 2023)</span></div>
+          <div class="tags">
+            <span class="tag">Under Oath</span><span class="tag">IC/DoD</span><span class="tag">Non‑human materials claims</span>
+          </div>
+          <div class="section">
+            <div class="label">Why he matters</div>
+            <p class="why">Provided sworn testimony to Congress alleging long‑running, compartmented U.S. recovery/exploitation programmes involving **non‑human craft/materials**.</p>
+          </div>
+          <div class="section">
+            <div class="label">Key claims</div>
+            <ul>
+              <li>Government‑wide knowledge of legacy UAP crash‑retrieval and reverse‑engineering efforts.</li>
+              <li>Claims of **intact and partially intact** non‑human craft in U.S. custody.</li>
+              <li>Retaliation after whistleblowing through proper channels.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="label">Sources</div>
+            <div class="sources">
+              <a href="https://oversight.house.gov/release/national-security-subcommittee-holds-hearing-on-unidentified-anomalous-phenomena/" target="_blank" rel="noopener">U.S. House Oversight hearing page (26 Jul 2023)</a>
+              <a href="https://www.c-span.org/video/?529073-1/house-oversight-subcommittee-hearing-unidentified-anomalous-phenomena" target="_blank" rel="noopener">C‑SPAN video of sworn hearing</a>
+            </div>
+          </div>
+          <blockquote>“I was informed of a multi‑decade UAP crash retrieval and reverse‑engineering program.”</blockquote>
+        </article>
 
-    <!-- 2025 HEARING -->
-    <h2 style="margin-top:8px;">2025 — Restoring Public Trust Through UAP Transparency & Whistleblower Protection (Sept 9, 2025)</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>George Knapp</h3>
-        <p>Investigative journalist (KLAS-TV). Provided context on records, witnesses, and transparency.</p>
-        <p><span class="badge">Sept 9, 2025</span> <a class="badge" href="https://oversight.house.gov/wp-content/uploads/2025/09/George-Knapp-Written-Testimony.pdf" target="_blank" rel="noopener">Statement (PDF)</a></p>
+        <!-- Cmdr. David Fravor -->
+        <article class="card" id="fravor">
+          <div class="name"><span class="who">Cmdr. David Fravor (USN, Ret.)</span><span class="role">F/A‑18 pilot; Nimitz “Tic Tac” encounter (2004); House witness (26 Jul 2023)</span></div>
+          <div class="tags">
+            <span class="tag">Under Oath</span><span class="tag">Pilot</span><span class="tag">Sensor & visual</span>
+          </div>
+          <div class="section">
+            <div class="label">Why he matters</div>
+            <p class="why">Provided first‑hand, corroborated account of the 2004 **Tic Tac** intercept, one of the most documented military UAP cases.</p>
+          </div>
+          <div class="section">
+            <div class="label">Key claims</div>
+            <ul>
+              <li>Observed a craft with extreme acceleration and no visible control surfaces or exhaust.</li>
+              <li>Engagement corroborated by multiple sensors, pilots, and the USS Princeton.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="label">Sources</div>
+            <div class="sources">
+              <a href="https://www.c-span.org/video/?529073-1/house-oversight-subcommittee-hearing-unidentified-anomalous-phenomena" target="_blank" rel="noopener">C‑SPAN: sworn House hearing</a>
+              <a href="https://www.navair.navy.mil/foia/documents" target="_blank" rel="noopener">NAVAIR / FOIA docs (context)</a>
+            </div>
+          </div>
+          <blockquote>“It accelerated and disappeared in a blink.”</blockquote>
+        </article>
+
+        <!-- Ryan Graves -->
+        <article class="card" id="graves">
+          <div class="name"><span class="who">Ryan Graves</span><span class="role">Former USN F/A‑18 pilot; House witness (26 Jul 2023)</span></div>
+          <div class="tags">
+            <span class="tag">Under Oath</span><span class="tag">Pilot</span><span class="tag">Safety of flight</span>
+          </div>
+          <div class="section">
+            <div class="label">Why he matters</div>
+            <p class="why">Brought forward recurring UAP encounters by U.S. Navy aviators, emphasising **air safety** and reporting barriers.</p>
+          </div>
+          <div class="section">
+            <div class="label">Key claims</div>
+            <ul>
+              <li>Regular sightings of objects with unusual performance off the U.S. East Coast.</li>
+              <li>Pilots face stigma and inadequate reporting mechanisms.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="label">Sources</div>
+            <div class="sources">
+              <a href="https://www.c-span.org/video/?529073-1/house-oversight-subcommittee-hearing-unidentified-anomalous-phenomena" target="_blank" rel="noopener">C‑SPAN: sworn House hearing</a>
+              <a href="https://www.americansforknowledge.com/" target="_blank" rel="noopener">Americans for Safe Aerospace</a>
+            </div>
+          </div>
+          <blockquote>“UAP are an urgent national security and safety of flight issue.”</blockquote>
+        </article>
+
+        <!-- Add additional under‑oath witnesses here if needed, using the same card structure -->
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Jeffrey Nuccetelli</h3>
-        <p>USAF veteran. Testified on sensor-corroborated incidents and witness protections.</p>
-        <p><span class="badge">Sept 9, 2025</span> <a class="badge" href="https://oversight.house.gov/wp-content/uploads/2025/09/Nuccetelli-Written-Testimony.pdf" target="_blank" rel="noopener">Statement (PDF)</a></p>
+    <div class="divider"></div>
+
+    <!-- =============================================== -->
+    <!-- Group 2: Credible Witnesses Who Need to Testify -->
+    <!-- =============================================== -->
+    <section id="arguably">
+      <h2>Credible Witnesses Who Arguably Need To Testify</h2>
+      <p class="note">Statements below are public and on‑record, but **not under oath**. Some materials are not publicly released; inclusion does not imply verification of all claims.</p>
+
+      <div class="grid">
+        <!-- Dr James T. Lacatski -->
+        <article class="card" id="lacatski">
+          <div class="name"><span class="who">Dr James T. Lacatski</span><span class="role">Former DIA analyst; AAWSAP Programme Manager (2008–2010)</span></div>
+          <div class="tags">
+            <span class="tag">DIA</span><span class="tag">AAWSAP</span><span class="tag">2008–2010</span>
+          </div>
+          <div class="section">
+            <div class="label">Why he matters</div>
+            <p class="why">Oversaw DIA’s AAWSAP. Stated on‑record that U.S. personnel **accessed the interior** of a **craft of unknown origin** stored in a secure facility.</p>
+          </div>
+          <div class="section">
+            <div class="label">Key claims</div>
+            <ul>
+              <li>Led AAWSAP ($22m) investigating UAP and related effects.</li>
+              <li>Claims existence of a **recovered craft of unknown origin** and interior access by U.S. personnel.</li>
+              <li>Co‑authored a 2023 book on the programme and secrecy.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="label">Sources</div>
+            <div class="sources">
+              <a href="https://www.weaponizedpodcast.com/episodes-2/episode-38" target="_blank" rel="noopener">WEAPONIZED — Episode 38 (on‑record interview)</a>
+              <a href="https://www.youtube.com/watch?v=ow7FqiegixQ" target="_blank" rel="noopener">YouTube: Weaponized #38</a>
+              <a href="https://open.spotify.com/episode/3mg5xRsG47k11m1bcLLTo0" target="_blank" rel="noopener">Spotify: Weaponized #38</a>
+              <a href="https://www.amazon.com/dp/B0CKP3YQRM" target="_blank" rel="noopener">Book: Inside the U.S. Government Covert UFO Program (2023)</a>
+            </div>
+          </div>
+          <blockquote>“Yes, they got inside the craft.” — *WEAPONIZED* #38</blockquote>
+        </article>
+
+        <!-- Matthew Brown -->
+        <article class="card" id="brown">
+          <div class="name"><span class="who">Matthew Brown</span><span class="role">Former DoD official; author of the Immaculate Constellation report (submitted to Congress)</span></div>
+          <div class="tags">
+            <span class="tag">DoD</span><span class="tag">Immaculate Constellation</span><span class="tag">2024–2025</span>
+          </div>
+          <div class="section">
+            <div class="label">Why he matters</div>
+            <p class="why">Publicly claims **direct access to a non‑human craft**, stating he and colleagues **entered** it, and has briefed lawmakers.</p>
+          </div>
+          <div class="section">
+            <div class="label">Key claims</div>
+            <ul>
+              <li>Personally entered a **recovered craft of unknown origin** inside a U.S. government facility.</li>
+              <li>Submitted the <em>Immaculate Constellation</em> report to Congress outlining legacy programmes and secrecy (full text not public).</li>
+              <li>Advocates disclosure; asserts non‑human technology has been maintained in secure locations.</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="label">Sources</div>
+            <div class="sources">
+              <a href="https://www.weaponizedpodcast.com/episodes-2/episode-76" target="_blank" rel="noopener">WEAPONIZED — Episode 76 (series page)</a>
+              <a href="https://www.youtube.com/watch?v=6ZzYwKXvKzM" target="_blank" rel="noopener">YouTube: Weaponized (Matthew Brown)</a>
+              <a href="https://open.spotify.com/episode/4gFZKJv7bWq9a1X8ZpLJvZK" target="_blank" rel="noopener">Spotify: Weaponized (Matthew Brown)</a>
+              <a href="https://www.jeremycorbell.com/weaponized" target="_blank" rel="noopener">Jeremy Corbell — WEAPONIZED</a>
+              <a href="https://www.imdb.com/title/tt27621035/" target="_blank" rel="noopener">IMDB: Weaponized series</a>
+            </div>
+          </div>
+          <blockquote>“Yes. We got inside the craft.” — *WEAPONIZED* (Ep. 76 series)</blockquote>
+        </article>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Chief Alexandro Wiggins</h3>
-        <p>USN Senior Chief (Ops Specialist). Described USS Jackson (LCS-6) incident and records trail.</p>
-        <p><span class="badge">Sept 9, 2025</span> <a class="badge" href="https://oversight.house.gov/wp-content/uploads/2025/09/Wiggins-Written-Statement.pdf" target="_blank" rel="noopener">Statement (PDF)</a></p>
+    <!-- =================================== -->
+    <!-- CTA: Read enough? Email + Share     -->
+    <!-- =================================== -->
+    <section id="cta" class="card" style="margin-top:26px">
+      <h2 style="margin-top:0">Read enough? Ask BBC Panorama to investigate</h2>
+      <p class="note">Use the ready‑to‑send email below (you can edit it), or share this page to help others do the same.</p>
+      <div class="ctaRow">
+        <a id="ctaMailtoBtn" class="btn" href="#">Compose email now</a>
+        <button id="ctaCopyBtn" class="btn secondary">Copy email text</button>
       </div>
+      <p class="note">Recipient: <strong>panorama.reply@bbc.co.uk</strong> — Subject: <strong>Request for a Panorama Investigation into UAP Evidence</strong></p>
 
-      <div class="card">
-        <h3>Dylan Borland</h3>
-        <p>USAF veteran & analyst. Submitted whistleblower statement referencing ICIG/AARO contacts.</p>
-        <p><span class="badge">Sept 9, 2025</span> <a class="badge" href="https://oversight.house.gov/wp-content/uploads/2025/09/Borland-Written-Testimony.pdf" target="_blank" rel="noopener">Statement (PDF)</a></p>
+      <div class="section" style="margin-top:12px">
+        <div class="label">Share this page</div>
+        <div class="shareRow">
+          <a id="shareX" class="btn ghost" href="#" aria-label="Share on X (Twitter)">Share on X</a>
+          <a id="shareFacebook" class="btn ghost" href="#" aria-label="Share on Facebook">Share on Facebook</a>
+          <a id="shareReddit" class="btn ghost" href="#" aria-label="Share on Reddit">Share on Reddit</a>
+          <a id="shareWhatsApp" class="btn ghost" href="#" aria-label="Share on WhatsApp">Share on WhatsApp</a>
+        </div>
       </div>
-
-      <div class="card">
-        <h3>Joe Spielberger</h3>
-        <p>Senior Policy Counsel, Project On Government Oversight (POGO). Addressed protections and oversight.</p>
-        <p><span class="badge">Sept 9, 2025</span> <a class="badge" href="https://oversight.house.gov/wp-content/uploads/2025/09/Spielberger-Written-Testimony.pdf" target="_blank" rel="noopener">Statement (PDF)</a></p>
-      </div>
-    </div>
-
-    <!-- 2024 HEARING -->
-    <h2>2024 — Unidentified Anomalous Phenomena: Exposing the Truth (Nov 13, 2024)</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Luis (Lue) Elizondo</h3>
-        <p>Former DoD/AATIP official. Testified on transparency, over-classification, and witness treatment.</p>
-        <p><span class="badge">Nov 13, 2024</span> <a class="badge" href="https://oversight.house.gov/wp-content/uploads/2024/11/Written-Testimony-Elizondo.pdf" target="_blank" rel="noopener">Statement (PDF)</a></p>
-      </div>
-
-      <div class="card">
-        <h3>Rear Adm. Tim Gallaudet (Ret.)</h3>
-        <p>Former Acting NOAA Administrator; USN flag officer. Urged structured scientific investigation.</p>
-        <p><span class="badge">Nov 13, 2024</span> <a class="badge" href="https://oversight.house.gov/wp-content/uploads/2024/11/Updated-Testimony-Gallaudet.pdf" target="_blank" rel="noopener">Statement (PDF)</a></p>
-      </div>
-
-      <div class="card">
-        <h3>Michael Gold</h3>
-        <p>Former NASA Associate Administrator for Space Policy & Partnerships.</p>
-        <p><span class="badge">Nov 13, 2024</span> <a class="badge" href="https://oversight.house.gov/wp-content/uploads/2024/11/Written-Testimony-Gold.pdf" target="_blank" rel="noopener">Statement (PDF)</a></p>
-      </div>
-
-      <div class="card">
-        <h3>Michael Shellenberger</h3>
-        <p>Journalist/author. Submitted extended written testimony and exhibits.</p>
-        <p><span class="badge">Nov 13, 2024</span> <a class="badge" href="https://oversight.house.gov/wp-content/uploads/2024/11/Written-Testimony-Shellenberger.pdf" target="_blank" rel="noopener">Statement (PDF)</a></p>
-      </div>
-    </div>
-
-    <!-- 2023 HEARING -->
-    <h2>2023 — UAP: Implications on National Security, Public Safety & Government Transparency (Jul 26, 2023)</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>David Grusch</h3>
-        <p>Former NRO representative to the UAP Task Force; IC whistleblower protections invoked.</p>
-        <p><span class="badge">Jul 26, 2023</span> <a class="badge" href="https://oversight.house.gov/wp-content/uploads/2023/07/Dave_G_HOC_Speech_FINAL_For_Trans.pdf" target="_blank" rel="noopener">Statement (PDF)</a></p>
-      </div>
-
-      <div class="card">
-        <h3>Ryan Graves</h3>
-        <p>Former USN F/A-18 pilot; Americans for Safe Aerospace. Testified on flight-safety and UAP reporting.</p>
-        <p><span class="badge">Jul 26, 2023</span> <a class="badge" href="https://oversight.house.gov/wp-content/uploads/2023/07/Ryan-HOC-Testimony.pdf" target="_blank" rel="noopener">Statement (PDF)</a></p>
-      </div>
-
-      <div class="card">
-        <h3>Cmdr. David Fravor (Ret.)</h3>
-        <p>Former CO, VFA-41 “Black Aces” (USN). Recounted 2004 “Tic-Tac” intercept (USS Nimitz CSG).</p>
-        <p><span class="badge">Jul 26, 2023</span> <a class="badge" href="https://oversight.house.gov/wp-content/uploads/2023/07/David-Fravor-Statement-for-House-Oversight-Committee.pdf" target="_blank" rel="noopener">Statement (PDF)</a></p>
-      </div>
-    </div>
-
-    <div class="card">
-      <p><em>Tip for reporters:</em> For certified transcripts and full materials, see the official hearing pages linked from our <a href="../../evidence/sworn-testimony-uap-oversight-2023-2024/">Hearings summary</a>.</p>
-    </div>
-
-    <div data-cta></div>
-
-    <footer class="footer">© <span id="y"></span> UAP Evidence</footer>
+    </section>
   </div>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+  <script>
+    // ----- Email CTA wiring (footer) -----
+    const CTA_RECIPIENT = 'panorama.reply@bbc.co.uk';
+    const CTA_SUBJECT = 'Request for a Panorama Investigation into UAP Evidence';
+
+    const CTA_SHORT_BODY = `Dear Panorama Team,
+
+Please consider a broadcast investigation into the growing body of UAP (Unidentified Anomalous Phenomena) evidence. Given Panorama’s remit and accountability to licence fee payers, a rigorous, impartial programme would be in the clear public interest.
+
+Kind regards,
+[Your name]
+[Postcode]`;
+
+    const CTA_LONG_BODY = `Dear Panorama Team,
+
+I am writing to request a serious, balanced Panorama investigation into the accumulating evidence and testimonies relating to UAP (Unidentified Anomalous Phenomena). As a programme accountable to licence fee payers, Panorama is well placed to examine this topic with the same rigour applied to other major public‑interest issues.
+
+A robust episode could:
+• Assess UK‑relevant evidence and data;
+• Hear from credible whistleblowers, scientists and officials;
+• Examine transparency, oversight and policy;
+• Clarify areas of uncertainty without sensationalism.
+
+Members of the public—including myself—would value clear, impartial reporting that neither dismisses credible leads nor overstates claims. The goal is responsible scrutiny.
+
+Thank you for considering this request.
+
+Kind regards,
+[Your full name]
+[Postcode / Constituency]`;
+
+    function buildMailto(recipient, subject, body) {
+      const params = new URLSearchParams({ subject, body });
+      return `mailto:${recipient}?${params.toString()}`;
+    }
+
+    const ctaMailtoBtn = document.getElementById('ctaMailtoBtn');
+    const ctaCopyBtn = document.getElementById('ctaCopyBtn');
+
+    if (ctaMailtoBtn) {
+      ctaMailtoBtn.addEventListener('click', () => {
+        ctaMailtoBtn.setAttribute('href', buildMailto(CTA_RECIPIENT, CTA_SUBJECT, CTA_SHORT_BODY));
+      });
+    }
+
+    if (ctaCopyBtn) {
+      ctaCopyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(CTA_LONG_BODY);
+          ctaCopyBtn.textContent = 'Copied!';
+          setTimeout(() => (ctaCopyBtn.textContent = 'Copy email text'), 1400);
+        } catch (e) {
+          alert('Could not copy automatically. Please select and copy.');
+        }
+      });
+    }
+
+    // ----- Social share wiring -----
+    function openWindow(u) { window.open(u, '_blank', 'noopener'); }
+
+    const pageUrl = encodeURIComponent(window.location.href);
+    const shareText = encodeURIComponent('Ask @BBCPanorama to investigate UAP evidence. Use the email template on this page. #ufotwitter');
+
+    const shareX = document.getElementById('shareX');
+    const shareFacebook = document.getElementById('shareFacebook');
+    const shareReddit = document.getElementById('shareReddit');
+    const shareWhatsApp = document.getElementById('shareWhatsApp');
+
+    if (shareX) shareX.addEventListener('click', (e) => { e.preventDefault(); openWindow(`https://x.com/intent/tweet?text=${shareText}&url=${pageUrl}`); });
+    if (shareFacebook) shareFacebook.addEventListener('click', (e) => { e.preventDefault(); openWindow(`https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`); });
+    if (shareReddit) shareReddit.addEventListener('click', (e) => { e.preventDefault(); openWindow(`https://www.reddit.com/submit?url=${pageUrl}&title=${shareText}`); });
+    if (shareWhatsApp) shareWhatsApp.addEventListener('click', (e) => { e.preventDefault(); openWindow(`https://api.whatsapp.com/send?text=${shareText}%20${pageUrl}`); });
+    // ----- GoatCounter analytics (standard across pages) -----
+    // Zero-config: this ONLY fires events if GoatCounter is already loaded globally
+    // (e.g., your layout includes <script data-goatcounter="https://YOUR.goatcounter.com/count" src="https://gc.zgo.at/count.js" async></script>)
+
+    function gcEvent(name, extra = {}) {
+      const payload = Object.assign({
+        path: `/event/${name}`,
+        title: document.title,
+        event: true
+      }, extra);
+      if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+        window.goatcounter.count(payload);
+      } else {
+        (window.__gcq = window.__gcq || []).push(payload);
+      }
+    }
+
+    // If GoatCounter loads after this page JS, flush queued events when ready
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'complete' && window.__gcq && window.goatcounter && typeof window.goatcounter.count === 'function') {
+        window.__gcq.forEach(evt => window.goatcounter.count(evt));
+        window.__gcq = [];
+      }
+    });
+
+    // Hook up analytics events (safe no-ops if GoatCounter absent)
+    if (ctaMailtoBtn) ctaMailtoBtn.addEventListener('click', () => gcEvent('email_cta_click'));
+    if (ctaCopyBtn) ctaCopyBtn.addEventListener('click', () => gcEvent('email_cta_copy'));
+    if (shareX) shareX.addEventListener('click', () => gcEvent('share_x'));
+    if (shareFacebook) shareFacebook.addEventListener('click', () => gcEvent('share_facebook'));
+    if (shareReddit) shareReddit.addEventListener('click', () => gcEvent('share_reddit'));
+    if (shareWhatsApp) shareWhatsApp.addEventListener('click', () => gcEvent('share_whatsapp'));
+  </script>
 </body>
 </html>
