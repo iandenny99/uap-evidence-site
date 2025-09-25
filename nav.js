@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const base = (baseMeta ? baseMeta.getAttribute('content') : '/') || '/';
   const b = base.endsWith('/') ? base.slice(0, -1) : base; // e.g. "/uap-evidence-site"
 
-  // Build the top menu
+  // Build nav (added Influencers)
   const items = [
     { text: 'UAP Evidence', href: b + '/', brand: true },
     { text: 'Start Here',   href: b + '/start-here/' },
@@ -12,10 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     { text: 'Scientists',   href: b + '/people/scientists/' },
     { text: 'Journalists',  href: b + '/people/journalists/' },
     { text: 'Gatekeepers',  href: b + '/people/gatekeepers/' },
+    { text: 'Influencers',  href: b + '/people/influencers/' },
     { text: 'Toolkit',      href: b + '/toolkit/' },
     { text: 'Contribute',   href: b + '/contribute/' },
     { text: 'About',        href: b + '/about/' },
   ];
+
   document.querySelectorAll('.nav').forEach(nav => {
     const frag = document.createDocumentFragment();
     items.forEach(it => {
@@ -29,12 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.appendChild(frag);
   });
 
-  // Load GoatCounter (FREE) – this is YOUR address; no edits needed
+  // GoatCounter (free analytics)
   (function injectGoatCounter() {
     if (document.querySelector('script[src*="gc.zgo.at/count.js"]')) return;
     const s = document.createElement('script');
     s.async = true;
     s.src = 'https://gc.zgo.at/count.js';
+    // This should already be your subdomain:
     s.setAttribute('data-goatcounter', 'https://iandenny.goatcounter.com/count');
     document.head.appendChild(s);
   })();
