@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Influencers (UK, USA & Sceptics) • UAP Evidence</title>
+  <meta name="description" content="Directory of UK and USA influencers on UAP—plus thoughtful sceptics—for reporters and researchers.">
+  <meta name="site-base" content="/uap-evidence-site/">
+  <meta name="site-url" content="https://iandenny99.github.io/uap-evidence-site/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script defer src="../../cta.js"></script>
+  <script defer src="../../nav.js"></script>
+
+  <!-- SheetJS to read your Excel file client-side -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <style>
+    details summary {
+      cursor: pointer;
+      padding: 6px 0;
+    }
+    .accordion details { margin-bottom: 8px; }
+    .accordion ul { margin: 8px 0 0 1rem; }
+    .muted { opacity: 0.8; font-size: 0.95em; }
+    .kicker { margin: 0 0 6px; font-weight: 600; opacity: .9; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav"></nav>
+
+    <h1>Influencers</h1>
+
+    <section class="card">
+      <p><strong>This is a page for UK and USA influencers on the topic of UAPs, plus a few sceptics for balance.</strong> It was compiled against strict criteria.</p>
+      <h3>How we built these UK &amp; USA lists (in plain English):</h3>
+      <p>We looked for sober, evidence-led voices who talk about UAPs regularly and have a real audience: journalists, researchers, scientists, pilots/witnesses, credible orgs, podcast hosts—and a few thoughtful skeptics for balance. We excluded hypey repost farms, sensational accounts without sourcing, and one-off viral posters. The bar was originality, civility, consistency, and engagement.</p>
+      <p>We searched Twitter/X, YouTube, and TikTok using topic hashtags and known names, then expanded via who credible accounts follow, cite, or host. For each person/org we made one row and added Twitter, YouTube, TikTok links (plus website, email/contact when available). UK lists also include active regional groups/societies posting original content.</p>
+      <p>“Influence” here isn’t just follower counts; it’s steady, quality contribution and audience response over time. Some judgments are qualitative and links change, so we’ll update. If you’re listed and want edits—or you clearly meet the criteria but aren’t here—please get in touch.</p>
+      <p><em>Note:</em> Some people may appear more than once if they have multiple online identities that meet the criteria.</p>
+    </section>
+
+    <div id="influencers-root"></div>
+
+    <p class="kicker">Click a category to expand.</p>
+
+    <div data-cta></div>
+
+    <footer class="footer">© <span id="y"></span> UAP Evidence</footer>
+  </div>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // ---- Utility helpers ----
+    const h = (s) => (s == null ? '' : String(s).trim());
+    const link = (label, url) => {
+      const u = h(url);
+      if (!u) return '';
+      const href = label === 'Email' && !u.toLowerCase().startsWith('mailto:') ? `mailto:${u}` : u;
+      return `<a href="${href}" target="_blank" rel="noopener">${label}</a>`;
+    };
+    const badge = (n) => `<span class="badge">${n}</span>`;
+
+    function normalizeRow(row, map) {
+      // Map flexible column names into a standard shape
+      return {
+        name: h(row[map.name]),
+        category: h(row[map.category]) || 'Other',
+        twitter: h(row[map.twitter]),
+        youtube: h(row[map.youtube]),
+        tiktok: h(row[map.tiktok]),
+        website: h(row[map.website]),
+        email: h(row[map.email]),
+        notes: h(row[map.notes])
+      };
+    }
+
+    function renderSection(title, rows) {
+      // Group by category
+      const byCat = {};
+      rows.forEach(r => {
+        const cat = r.category || 'Other';
+        (byCat[cat] ||= []).push(r);
+      });
+
+      // Sort categories A–Z, and entries A–Z
+      const cats = Object.keys(byCat).sort((a,b) => a.localeCompare(b, undefined, {sensitivity:'base'}));
+      cats.forEach(c => byCat[c].sort((a,b) => (a.name||'').localeCompare(b.name||'', undefined, {sensitivity:'base'})));
+
+      // Build HTML
+      let html = `<h2>${title}</h2><div class="accordion">`;
+      for (const cat of cats) {
+        const items = byCat[cat].map(r => {
+          const bits = [];
+          if (r.twitter) bits.push(link('Twitter', r.twitter));
+          if (r.youtube) bits.push(link('YouTube', r.youtube));
+          if (r.tiktok) bits.push(link('TikTok', r.tiktok));
+          if (r.website) bits.push(link('Website', r.website));
+          if (r.email) bits.push(link('Email', r.email));
+          const links = bits.length ? ' — ' + bits.join(' · ') : '';
+          const notes = r.notes ? `<li class="muted" style="list-style:none;margin-left:0.75rem">${r.notes}</li>` : '';
+          return `<li><strong>${r.name}</strong>${links}</li>${notes}`;
+        }).join('\n');
+
+        html += `
+<details>
+  <summary><strong>${cat}</strong> ${badge(byCat[cat].length)}</summary>
+  <ul>
+    ${items}
+  </ul>
+</details>`;
+      }
+      html += `</div>`;
+      return html;
+    }
+
+    async function loadAndRender() {
+      const root = document.getElementById('influencers-root');
+      root.innerHTML = '<section class="card"><p>Loading directory…</p></section>';
+
+      // Fetch the Excel file (you'll upload it in Step 2 below)
+      const resp = await fetch('./data/influencers.xlsx');
+      if (!resp.ok) {
+        root.innerHTML = '<section class="card"><p>Could not load the Excel file. Please check that <code>people/influencers/data/influencers.xlsx</code> exists.</p></section>';
+        return;
+      }
+      const buf = await resp.arrayBuffer();
+      const wb = XLSX.read(buf, { type: 'array' });
+
+      // Sheet -> column map (matches your workbook)
+      const maps = {
+        'Mainly UK':    { name: 'Name', category: 'Category', twitter: 'Twitter Link', youtube: 'YouTube Link', tiktok: 'TikTok Link', website: 'Website', email: 'Contact Email', notes: 'Notes' },
+        'Mainly USA':   { name: 'Name', category: 'Category', twitter: 'Twitter Link', youtube: 'YouTube Link', tiktok: 'TikTok Link', website: 'Website', email: 'Email',          notes: 'Contact Notes' },
+        'Sceptics':     { name: 'Name', category: 'Category', twitter: 'Twitter Link', youtube: 'YouTube Link', tiktok: 'TikTok Link', website: 'Website', email: '',               notes: '' }
+      };
+
+      function readSheet(sheetName) {
+        const ws = wb.Sheets[sheetName];
+        if (!ws) return [];
+        const rows = XLSX.utils.sheet_to_json(ws, { defval: '' });
+        const map = maps[sheetName];
+        return rows.map(r => normalizeRow(r, map)).filter(r => r.name);
+      }
+
+      // Build sections
+      const uk  = readSheet('Mainly UK');
+      const usa = readSheet('Mainly USA');
+      const sk  = readSheet('Sceptics');
+
+      const html = [
+        renderSection('UK Influencers', uk),
+        renderSection('USA Influencers', usa),
+        renderSection('Sceptical Influencers', sk)
+      ].map(s => `<section class="card">${s}</section>`).join('\n');
+
+      root.innerHTML = html;
+    }
+
+    loadAndRender();
+  </script>
+</body>
+</html>
