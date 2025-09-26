@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panorama: “Secrets in the Sky” (Pitch) • UAP Evidence</title>
+  <meta name="description" content="Read the Panorama pitch PDF — then email the Panorama team in one click.">
+  <meta name="site-base" content="/uap-evidence-site/">
+  <meta name="site-url" content="https://iandenny99.github.io/uap-evidence-site/">
+  <link rel="stylesheet" href="../../styles.css">
+  <script defer src="../../cta.js"></script>
+  <script defer src="../../nav.js"></script>
+  <style>
+    .pdf-wrap { height: 80vh; border: 1px solid #24283a; border-radius: 12px; overflow: hidden; background:#0b0c12; }
+    .pdf-wrap object { width: 100%; height: 100%; }
+    .actions a.badge, .actions a.btn { margin-right: 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav"></nav>
+
+    <h1>Panorama Pitch: <em>Secrets in the Sky</em></h1>
+
+    <!-- Option A intro -->
+    <section class="card">
+      <p class="lede">
+        This is a working proposal for a Panorama investigation into UAP (Unidentified Anomalous Phenomena). It sketches how a documentary
+        could follow the evidence: primary documents, sworn testimony, and on-record interviews—then test competing claims with the BBC’s standards of proof.
+      </p>
+      <p class="note">
+        <strong>Important note:</strong> This is an editorial <em>outline</em>, not a finished script. Some roles are <em>placeholders</em>
+        pending further reporting (for example, precisely who blocked specific UAP Disclosure Act provisions at each stage). All assertions would
+        require independent BBC verification against the primary sources linked across this site.
+      </p>
+      <p>If you have relevant information, corrections, or leads, please share them. And if you’d like Panorama to take this forward, use the button below to email the team with your own short introduction.</p>
+    </section>
+
+    <!-- PDF Preview -->
+    <section class="card">
+      <h3>Preview</h3>
+      <div class="pdf-wrap">
+        <object
+          data="./panorama-secrets-in-the-sky.pdf#view=FitH&pagemode=none"
+          type="application/pdf">
+          <p>PDF preview not available in this browser.
+            <a id="pdf-open" href="./panorama-secrets-in-the-sky.pdf" target="_blank" rel="noopener">Open the PDF</a> or
+            <a id="pdf-download" href="./panorama-secrets-in-the-sky.pdf" download>download it</a>.
+          </p>
+        </object>
+      </div>
+      <p class="actions" style="margin-top:12px;">
+        <a id="pdf-open-btn" class="btn" href="./panorama-secrets-in-the-sky.pdf" target="_blank" rel="noopener">Open full-screen</a>
+        <a id="pdf-download-btn" class="badge" href="./panorama-secrets-in-the-sky.pdf" download>Download PDF</a>
+      </p>
+    </section>
+
+    <!-- Site-wide Panorama email + share (tracked) -->
+    <div data-cta></div>
+
+    <footer class="footer">© <span id="y"></span> UAP Evidence</footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Track PDF actions in GoatCounter "Top pages"
+    function track(path, title) {
+      if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+        window.goatcounter.count({ path, title });
+      }
+    }
+    function bind(id, path, title) {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('click', () => track(path, title));
+    }
+    // Buttons and fallback links
+    bind('pdf-open-btn', '/action/panorama-pdf-open', 'Panorama PDF Open');
+    bind('pdf-download-btn', '/action/panorama-pdf-download', 'Panorama PDF Download');
+    bind('pdf-open', '/action/panorama-pdf-open', 'Panorama PDF Open');
+    bind('pdf-download', '/action/panorama-pdf-download', 'Panorama PDF Download');
+  </script>
+</body>
+</html>
