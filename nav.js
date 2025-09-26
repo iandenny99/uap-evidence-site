@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { text: 'Influencers',  href: b + '/people/influencers/' },
     { text: 'Toolkit',      href: b + '/toolkit/' },
     { text: 'Contribute',   href: b + '/contribute/' },
+    { text: 'Panorama Pitch', href: b + '/features/panorama/' },
     { text: 'About',        href: b + '/about/' },
   ];
 
